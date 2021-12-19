@@ -72,6 +72,8 @@ def check_accurcy(loader,model):
             x = x.reshape(x.shape[0],-1)   
             print(scores.max(1))
             _, predictions =  scores.max(1)
+            # the class with the highest energy is what we choose as prediction
+            #_, predicted = torch.max(outputs.data, 1)
             num_correct += (predictions == y).sum()
             num_samples += predictions.size(0)
         print(f'Got {num_correct}/{num_samples} with accurcy{float(num_correct)/ float(num_samples)*100:.2f}')
